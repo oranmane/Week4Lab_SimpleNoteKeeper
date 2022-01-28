@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewnote
     Created on : Jan. 27, 2022, 11:26:34 p.m.
-    Author     : Seungjin
+    Author     : Seungjin Moon
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,8 +17,8 @@
         <h2>View Note</h2>
         
         <p><strong>Title:</strong> <c:out value="${note.title}" /></p>
-        <p><strong>Contents:</strong></p>
-        <p> <c:out value="${note.contents}" /></p>
+        <p><strong>Contents:</strong><br>
+        <c:out value="${note.contents}" /></p>
         <a href="note?edit">Edit</a>
     </body>
 </html>

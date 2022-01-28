@@ -6,7 +6,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 /**
- *
+ * Note Controller
  * @author Seungjin Moon
  */
 public class NoteServlet extends HttpServlet {
@@ -21,26 +21,24 @@ public class NoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String path = getServletContext().getRealPath("/WEB-INF/note.txt");
+
+        BufferedReader br = new BufferedReader(new FileReader(new File(path)));
+
+        String title = br.readLine();
+        String contents = br.readLine();
+
+        Note note = new Note(title, contents);
+
+        request.setAttribute("note", note);
         
         String query = request.getQueryString();
         
         if (query != null && query.contains("edit")) {
             // Display the edit form.
-            
             getServletContext().getRequestDispatcher("/WEB-INF/editnote.jsp").forward(request, response);
         } else {
             // Display the note.
-            String path = getServletContext().getRealPath("/WEB-INF/note.txt");
-
-            BufferedReader br = new BufferedReader(new FileReader(new File(path)));
-
-            String title = br.readLine();
-            String contents = br.readLine();
-
-            Note note = new Note(title, contents);
-
-            request.setAttribute("note", note);
-
             getServletContext().getRequestDispatcher("/WEB-INF/viewnote.jsp").forward(request, response);
         }
         

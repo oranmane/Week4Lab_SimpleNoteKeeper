@@ -21,7 +21,7 @@
             </div>
             <div>
                 <lable for="contents">Contents:</lable>
-                <input type="text" name="contents" id="contents" style="height: 100px" value="${note.contents}">
+                <textarea rows="7" cols="30" name="contents" id="contents" property=value>${note.contents}</textarea>
             </div>
             
             <button type="submit">Save</button>
